@@ -4,8 +4,43 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body ng-app="MyApp">
     <p>This is an awesome website</p>
     <p>Contact the Web Master on the ircs</p>
+
+    <div ng-controller="MyController as cont">
+      <input ng-model="cont.foo" />
+      <p>{{cont.foo}}</p>
+      <button ng-click="cont.doSomething(cont.foo)" >Alert</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script>
+      var app = angular.module('MyApp', [
+        'MyController'
+      ]);
+
+      angular.module('MyController', []).controller('MyController', function () {
+        this.foo = 'bar';
+
+        this.doSomething = function (value) {
+          alert(value);
+        };
+      });
+    </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
