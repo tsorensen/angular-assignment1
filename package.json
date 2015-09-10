@@ -5,7 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/dgm-ria-fall-2015/angular-vs-react/issues"
   },
-  "homepage": "https://github.com/dgm-ria-fall-2015/angular-vs-react"
+  "homepage": "https://github.com/dgm-ria-fall-2015/angular-vs-react",
+  "devDependencies": {
+    "bower": "^1.5.2"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }

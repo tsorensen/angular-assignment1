@@ -8,7 +8,8 @@
   "freeze"        : true,     // prohibits overwriting prototypes of native objects
   "funcscope"     : false,    // prohibits variable being used out of scope
   "globals"       : {
-    "Promise"       : true    // Prevents Promise being redeclared (bluebird)
+    "Promise"       : true,   // Prevents Promise being redeclared (bluebird)
+    "angular"       : true
   },
   "globalstrict"  : false,    // Prevents 'use strict' errors. 'use strict' will be required in our case
   "immed"         : false,    // Immediately invoked functions must be wrapped in parentheses (for readability)
