@@ -1,0 +1,24 @@
+/********* GLOBAL **********/
+body {
+  padding-top: 70px;
+}
+
+.search-block {
+  margin: 20px 0;
+  background:#f2f2f2;
+  padding:20px;
+  border-radius:5px;
+}
+
+/******** REP OUTPUT ********/
+.rep-list {
+  margin-top:30px;
+}
+
+.R {
+  color:#CC0D00;
+}
+
+.D {
+  color: #2F3AFF;
+}
