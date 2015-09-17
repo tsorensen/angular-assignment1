@@ -3,6 +3,8 @@ body {
   padding-top: 70px;
 }
 
+
+/****** SEARCH FORMS *******/
 .search-block {
   margin: 20px 0;
   background:#f2f2f2;
@@ -10,8 +12,9 @@ body {
   border-radius:5px;
 }
 
-/******** REP OUTPUT ********/
-.rep-list {
+
+/****** SEARCH OUTPUT ******/
+.output-list {
   margin-top:30px;
 }
 
