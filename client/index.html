@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Find your representative</title>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/custom.css" />
 
   </head>
@@ -12,7 +13,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">
-            Search State Representatives
+            Search Congress Members
           </a>
         </div>
       </div>
@@ -22,73 +23,46 @@
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
 
-          <div class="row search-block">
+          <div class="row">
             <div class="col-sm-12">
-              <form ng-submit="main.searchByZip(main.inputs.zip)">
-                <div class="form-group">
-                  <label>All By Zip Code: </label>
-                  <input class="form-control" type="text" ng-model="main.inputs.zip"/>
-                </div>
-                <input class="btn btn-default btn-primary" type="submit" value="Submit" />
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="main.congressType" value="reps" />
+                  Representatives
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" ng-model="main.congressType" value="sens" />
+                  Senators
+                </label>
+              </div>
+            </div><!-- .col -->
+          </div><!-- .row -->
+
+          <div class="row">
+            <div class="col-sm-12">
+              <form class="form-inline search-form">
+                <select class="form-control" ng-model="main.criteria" ng-change="main.input = ''" ng-options="item as item.label for item in main.apis"></select>
+                <input class="form-control" type="text" ng-disabled="main.loading" ng-model="main.input" />
+                <input class="btn btn-default btn-primary" type="submit" value="Submit" ng-disabled="main.loading" ng-click="main.criteria.method(main.input)" />
               </form>
             </div><!-- .col -->
           </div><!-- .row -->
 
-          <div class="row search-block">
-            <div class="col-sm-6">
-              <form ng-submit="main.searchRepsByName(main.inputs.repName)">
-                <div class="form-group">
-                  <label>Representative's Last Name: </label>
-                  <input class="form-control" type="text" ng-model="main.inputs.repName"/>
-                </div>
-                <input class="btn btn-default btn-primary" type="submit" value="Submit" />
-              </form>
-            </div><!-- .col -->
-
-            <div class="col-sm-6">
-              <form ng-submit="main.searchRepsByState(main.inputs.repState)">
-                <div class="form-group">
-                  <label>Representative's State: </label>
-                  <input class="form-control" type="text" ng-model="main.inputs.repState"/>
-                </div>
-                <input class="btn btn-default btn-primary" type="submit" value="Submit" placeholder="UT"/>
-              </form>
-            </div><!-- .col -->
-        </div><!-- .row -->
-
-        <div class="row search-block">
-          <div class="col-sm-6">
-            <form ng-submit="main.searchSensByName(main.inputs.senName)">
-              <div class="form-group">
-                <label>Senator's Last Name: </label>
-                <input class="form-control" type="text" ng-model="main.inputs.senName"/>
-              </div>
-              <input class="btn btn-default btn-primary" type="submit" value="Submit" />
-            </form>
-          </div><!-- .col -->
-
-          <div class="col-sm-6">
-            <form ng-submit="main.searchSensByState(main.inputs.senState)">
-              <div class="form-group">
-                <label>Senator's State: </label>
-                <input class="form-control" type="text" ng-model="main.inputs.senState"/>
-              </div>
-              <input class="btn btn-default btn-primary" type="submit" value="Submit" placeholder="UT" />
-            </form>
-          </div><!-- .col -->
-        </div><!-- .row -->
 
           <ul class="list-group ouptut-list">
-            <li class="list-group-item" ng-repeat="rep in main.reps">
+            <li class="list-group-item no-border" ng-show="main.loading"><i class="fa fa-spinner fa-pulse fa-3x"></i></li>
+            <li class="list-group-item" ng-hide="main.loading" ng-repeat="rep in main.reps">
               <h4 class="list-group-item-heading {{rep.party}}">{{rep.name}}</h4>
               <p>State: {{rep.state}}</p>
               <a href="{{rep.link}}" target="_blank">{{rep.link}}</a>
             </li>
           </ul>
 
-        </div><!-- .col -->
-      </div><!-- .row -->
-    </div><!-- .container -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .row -->
+  </div><!-- .container -->
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/js/app.js"></script>
