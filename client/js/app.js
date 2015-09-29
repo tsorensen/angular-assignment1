@@ -10,11 +10,13 @@ angular.module('RepsAppControllers', [
     self.reps = [];
     self.congressType = 'reps';
     self.loading = false;
+    self.searchedOnce = false;
 
     self.apis = [{
       label: 'Zip',
       method: function(zip) {
         self.loading = true;
+        self.searchedOnce = true;
         reps('all', 'zip', zip).then(function(data) {
           self.loading = false;
           self.reps = data;
@@ -25,6 +27,7 @@ angular.module('RepsAppControllers', [
       label: 'Last Name',
       method: function(name) {
         self.loading = true;
+        self.searchedOnce = true;
         reps(self.congressType, 'name', name).then(function(data) {
           self.loading = false;
           self.reps = data;
@@ -35,6 +38,7 @@ angular.module('RepsAppControllers', [
       label: 'State',
       method: function(state) {
         self.loading = true;
+        self.searchedOnce = true;
         reps(self.congressType, 'state', state).then(function(data) {
           self.loading = false;
           self.reps = data;

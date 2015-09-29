@@ -44,8 +44,8 @@
             <div class="col-sm-12">
               <form class="form-inline search-form">
                 <select class="form-control" ng-model="main.criteria" ng-change="main.input = ''" ng-options="item as item.label for item in main.apis"></select>
-                <input class="form-control" type="text" ng-disabled="main.loading" ng-model="main.input" />
-                <input class="btn btn-default btn-primary" type="submit" value="Submit" ng-disabled="main.loading" ng-click="main.criteria.method(main.input)" />
+                <input class="form-control" type="text" ng-disabled="main.loading" ng-model="main.input" autofocus/>
+                <input class="btn btn-default btn-primary" type="submit" value="Submit" ng-disabled="main.loading || !main.input" ng-click="main.criteria.method(main.input)" />
               </form>
             </div><!-- .col -->
           </div><!-- .row -->
@@ -53,6 +53,7 @@
 
           <ul class="list-group ouptut-list">
             <li class="list-group-item no-border" ng-show="main.loading"><i class="fa fa-spinner fa-pulse fa-3x"></i></li>
+            <li class="list-group-item no-border" ng-show="main.reps.length === 0 && !main.loading && main.searchedOnce">No Results</li>
             <li class="list-group-item" ng-hide="main.loading" ng-repeat="rep in main.reps">
               <h4 class="list-group-item-heading {{rep.party}}">{{rep.name}}</h4>
               <p>State: {{rep.state}}</p>
